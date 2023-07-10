@@ -33,7 +33,7 @@ type CreateContextOptions = Record<string, never>;
  *
  * @see https://create.t3.gg/en/usage/trpc#-serverapitrpcts
  */
-const createInnerTRPCContext = (_opts: CreateContextOptions) => {
+export const createInnerTRPCContext = (_opts: CreateContextOptions) => {
   return {
     cache,
     redis,
@@ -47,7 +47,17 @@ const createInnerTRPCContext = (_opts: CreateContextOptions) => {
  * @see https://trpc.io/docs/context
  */
 export const createTRPCContext = (_opts?: CreateNextContextOptions) => {
-  return createInnerTRPCContext({});
+  const inner = createInnerTRPCContext({})
+  let ip: string | undefined = undefined;
+  if (_opts?.req) {
+    ip = _opts.req.headers['x-forwarded-for']?.[0] || _opts.req.socket.remoteAddress;
+  }
+
+  return {
+    ...inner,
+    ..._opts,
+    ip,
+  };
 };
 
 /**

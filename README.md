@@ -10,7 +10,8 @@ To run locally:
 2. Optionally, setup [Soketi on CloudFlare](https://dash.soketi.app/register)
     a. Technically, any Pusher (v7 protocol) compatible server will work, however this is relatively inexpensive and quite scalable. Self-hosted Soketi or real Pusher instances have not been tested and as such can be used at your own risk.
 3. Copy `.env.example` as `.env` and populate the variables you wish to use.
-4. Run with `npm run dev`.
+4. Run `npm install` to install required dependencies.
+5. Run the app with `npm run dev` and visit `localhost:3000`.
 
 To host:
 I recommend hosting on Vercel because their Next.js experience is top notch, but other options for hosting next do exist.

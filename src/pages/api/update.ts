@@ -18,6 +18,6 @@ export default sigHandler;
 
 export const config = {
   api: {
-    bodyParser: false,
+    bodyParser: env.NODE_ENV !== "production",
   },
 };

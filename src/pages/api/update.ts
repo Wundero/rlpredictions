@@ -4,7 +4,9 @@ import type { NextApiHandler } from "next";
 import { env } from "@/env.mjs";
 
 const handler: NextApiHandler = async (req, res) => {
-  // TODO
+  // TODO:
+  //  update all data sources
+  //  revalidate all generated static pages (res.revalidate)
   res.status(200).end();
 };
 
